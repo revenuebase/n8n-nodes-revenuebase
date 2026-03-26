@@ -1,5 +1,5 @@
 {
-	"name": "n8n-nodes-revenuebase",
+	"name": "@revenuebase/n8n-nodes-revenuebase",
 	"version": "0.1.0",
 	"description": "n8n community node for the RevenueBase B2B data and email verification API",
 	"license": "MIT",
@@ -25,8 +25,7 @@
 		"dev": "n8n-node dev",
 		"lint": "n8n-node lint",
 		"lint:fix": "n8n-node lint --fix",
-		"release": "n8n-node release",
-		"prepublishOnly": "n8n-node prerelease"
+		"release": "n8n-node release"
 	},
 	"files": [
 		"dist"

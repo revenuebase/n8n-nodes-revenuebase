@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-revenuebase.revenueBase",
+	"node": "@revenuebase/n8n-nodes-revenuebase.revenueBase",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Sales"],
