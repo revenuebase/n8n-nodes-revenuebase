@@ -1,8 +1,10 @@
 # n8n-nodes-revenuebase
 
-This is an n8n community node. It lets you use RevenueBase in your n8n workflows.
+<img src="credentials/RevenueBase-Mark.png" alt="RevenueBase" width="80" />
 
-RevenueBase is a B2B data platform that provides verified email addresses, firmographic company data, and real-time email verification — built for sales, marketing, and RevOps teams.
+[RevenueBase](https://revenuebase.ai) is a B2B data platform that provides verified email addresses, firmographic company data, and natural language search for company and contact data — built for GTM. Use it to enrich leads, validate contact lists at scale, and discover target accounts from a keyword or ICP description.
+
+This is an n8n community node that lets you use RevenueBase in your n8n workflows.
 
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
 
