@@ -13,7 +13,7 @@ export class RevenueBaseApi implements ICredentialType {
 
 	documentationUrl = 'https://docs.revenuebase.ai/api-reference/authentication';
 
-	icon: Icon = 'file:RevenueBase-Mark.png';
+	icon: Icon = 'file:RevenueBase.svg';
 
 	properties: INodeProperties[] = [
 		{

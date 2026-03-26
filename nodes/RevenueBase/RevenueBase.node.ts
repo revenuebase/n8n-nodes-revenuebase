@@ -19,7 +19,7 @@ export class RevenueBase implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'RevenueBase',
 		name: 'revenueBase',
-		icon: 'file:RevenueBase-Mark.png',
+		icon: 'file:RevenueBase.svg',
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
