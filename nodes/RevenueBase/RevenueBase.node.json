@@ -1,0 +1,18 @@
+{
+	"node": "n8n-nodes-revenuebase.revenueBase",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Sales"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://docs.revenuebase.ai/api-reference/authentication"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://docs.revenuebase.ai/api-reference/overview"
+			}
+		]
+	}
+}

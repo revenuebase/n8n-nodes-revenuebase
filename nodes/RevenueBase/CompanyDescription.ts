@@ -1,0 +1,148 @@
+import type { INodeProperties } from 'n8n-workflow';
+
+export const companyOperations: INodeProperties[] = [
+	{
+		displayName: 'Operation',
+		name: 'operation',
+		type: 'options',
+		noDataExpression: true,
+		displayOptions: {
+			show: {
+				resource: ['company'],
+			},
+		},
+		options: [
+			{
+				name: 'Discover',
+				value: 'discover',
+				description:
+					'Search for companies using a keyword or natural-language description (up to 2,000 results ranked by similarity)',
+				action: 'Discover companies by keyword',
+			},
+			{
+				name: 'Resolve',
+				value: 'resolve',
+				description:
+					'Match a company name to a verified record and return firmographic data',
+				action: 'Resolve a company name',
+			},
+		],
+		default: 'resolve',
+	},
+];
+
+export const companyFields: INodeProperties[] = [
+	// ── Resolve ──────────────────────────────────────────────────────
+	{
+		displayName: 'Company Name',
+		name: 'name',
+		type: 'string',
+		required: true,
+		default: '',
+		placeholder: 'Acme Corp',
+		description: 'The company name to resolve against the RevenueBase database',
+		displayOptions: {
+			show: {
+				resource: ['company'],
+				operation: ['resolve'],
+			},
+		},
+	},
+	{
+		displayName: 'Additional Fields',
+		name: 'additionalFields',
+		type: 'collection',
+		placeholder: 'Add Field',
+		default: {},
+		displayOptions: {
+			show: {
+				resource: ['company'],
+				operation: ['resolve'],
+			},
+		},
+		options: [
+			{
+				displayName: 'Domain',
+				name: 'domain',
+				type: 'string',
+				default: '',
+				placeholder: 'acme.com',
+				description: 'Company domain to disambiguate companies with the same name',
+			},
+			{
+				displayName: 'Website',
+				name: 'website',
+				type: 'string',
+				default: '',
+				placeholder: 'https://www.acme.com',
+				description: 'Company website URL to disambiguate companies with the same name',
+			},
+		],
+	},
+
+	// ── Discover ─────────────────────────────────────────────────────
+	{
+		displayName: 'Keyword',
+		name: 'keyword',
+		type: 'string',
+		required: true,
+		default: '',
+		placeholder: 'cloud security software',
+		description: 'A keyword or natural-language description to search companies by',
+		displayOptions: {
+			show: {
+				resource: ['company'],
+				operation: ['discover'],
+			},
+		},
+	},
+	{
+		displayName: 'Result Count',
+		name: 'result_count',
+		type: 'number',
+		default: 10,
+		description: 'Number of results to return. Must be between 1 and 2000.',
+		typeOptions: {
+			minValue: 1,
+			maxValue: 2000,
+		},
+		displayOptions: {
+			show: {
+				resource: ['company'],
+				operation: ['discover'],
+			},
+		},
+	},
+	{
+		displayName: 'Additional Fields',
+		name: 'additionalFields',
+		type: 'collection',
+		placeholder: 'Add Field',
+		default: {},
+		displayOptions: {
+			show: {
+				resource: ['company'],
+				operation: ['discover'],
+			},
+		},
+		options: [
+			{
+				displayName: 'Headquarters Country',
+				name: 'hq_country',
+				type: 'string',
+				default: '',
+				placeholder: 'US',
+				description:
+					'Filter results to companies headquartered in this country (ISO 3166-1 alpha-2 code)',
+			},
+			{
+				displayName: 'Headquarters State',
+				name: 'hq_state',
+				type: 'string',
+				default: '',
+				placeholder: 'CA',
+				description: 'Filter results to companies headquartered in this state or region',
+			},
+		],
+	},
+];
