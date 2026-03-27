@@ -39,4 +39,17 @@ export const emailFields: INodeProperties[] = [
 			},
 		},
 	},
+	{
+		displayName: 'Metadata',
+		name: 'metadata',
+		type: 'boolean',
+		default: false,
+		description: 'Whether to include additional details such as MX records and email provider information in the response',
+		displayOptions: {
+			show: {
+				resource: ['email'],
+				operation: ['validate'],
+			},
+		},
+	},
 ];

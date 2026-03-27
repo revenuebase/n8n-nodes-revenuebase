@@ -91,11 +91,13 @@ export class RevenueBase implements INodeType {
 				if (resource === 'email') {
 					if (operation === 'validate') {
 						const email = this.getNodeParameter('email', i) as string;
+						const metadata = this.getNodeParameter('metadata', i) as boolean;
 
 						const options: IHttpRequestOptions = {
 							method: 'POST',
 							url: `${BASE_URL}/v1/process-email`,
 							headers: { 'Content-Type': 'application/json' },
+							qs: metadata ? { metadata: true } : {},
 							body: { email },
 							json: true,
 						};
@@ -151,7 +153,7 @@ export class RevenueBase implements INodeType {
 							method: 'POST',
 							url: `${BASE_URL}/v1/batch-process-email-status`,
 							headers: { 'Content-Type': 'application/json' },
-							body: { process_id: processId },
+							body: { process_id: parseInt(processId, 10) },
 							json: true,
 						};
 						responseData = await this.helpers.httpRequestWithAuthentication.call(
@@ -181,7 +183,7 @@ export class RevenueBase implements INodeType {
 							method: 'POST',
 							url: `${BASE_URL}/v1/batch-download`,
 							headers: { 'Content-Type': 'application/json' },
-							body: { process_id: processId },
+							body: { process_id: parseInt(processId, 10) },
 							encoding: 'arraybuffer',
 							returnFullResponse: true,
 						};
@@ -218,7 +220,7 @@ export class RevenueBase implements INodeType {
 							method: 'POST',
 							url: `${BASE_URL}/v1/cancel-process`,
 							headers: { 'Content-Type': 'application/json' },
-							body: { process_id: processId },
+							body: { process_id: parseInt(processId, 10) },
 							json: true,
 						};
 						responseData = await this.helpers.httpRequestWithAuthentication.call(
@@ -232,15 +234,23 @@ export class RevenueBase implements INodeType {
 				// ── Company ────────────────────────────────────────────────
 				else if (resource === 'company') {
 					if (operation === 'resolve') {
-						const name = this.getNodeParameter('name', i) as string;
+						const companyName = this.getNodeParameter('name', i) as string;
 						const additionalFields = this.getNodeParameter('additionalFields', i) as {
-							domain?: string;
-							website?: string;
+							result_count?: number;
+							hq_country?: string;
+							hq_state?: string;
+							hq_city?: string;
+							hq_street?: string;
+							hq_zip?: string;
 						};
 
-						const body: Record<string, string> = { name };
-						if (additionalFields.domain) body.domain = additionalFields.domain;
-						if (additionalFields.website) body.website = additionalFields.website;
+						const body: Record<string, unknown> = { company_name: companyName };
+						if (additionalFields.result_count) body.result_count = additionalFields.result_count;
+						if (additionalFields.hq_country) body.hq_country = additionalFields.hq_country;
+						if (additionalFields.hq_state) body.hq_state = additionalFields.hq_state;
+						if (additionalFields.hq_city) body.hq_city = additionalFields.hq_city;
+						if (additionalFields.hq_street) body.hq_street = additionalFields.hq_street;
+						if (additionalFields.hq_zip) body.hq_zip = additionalFields.hq_zip;
 
 						const options: IHttpRequestOptions = {
 							method: 'POST',
@@ -260,11 +270,17 @@ export class RevenueBase implements INodeType {
 						const additionalFields = this.getNodeParameter('additionalFields', i) as {
 							hq_country?: string;
 							hq_state?: string;
+							hq_city?: string;
+							hq_street?: string;
+							hq_zip?: string;
 						};
 
 						const body: Record<string, unknown> = { keyword, result_count: resultCount };
 						if (additionalFields.hq_country) body.hq_country = additionalFields.hq_country;
 						if (additionalFields.hq_state) body.hq_state = additionalFields.hq_state;
+						if (additionalFields.hq_city) body.hq_city = additionalFields.hq_city;
+						if (additionalFields.hq_street) body.hq_street = additionalFields.hq_street;
+						if (additionalFields.hq_zip) body.hq_zip = additionalFields.hq_zip;
 
 						const options: IHttpRequestOptions = {
 							method: 'POST',
@@ -296,9 +312,8 @@ export class RevenueBase implements INodeType {
 						);
 					} else if (operation === 'rotateApiKey') {
 						const options: IHttpRequestOptions = {
-							method: 'POST',
-							url: `${BASE_URL}/v1/rotate-key`,
-							headers: { 'Content-Type': 'application/json' },
+							method: 'GET',
+							url: `${BASE_URL}/v1/new-api-key`,
 							json: true,
 						};
 						responseData = await this.helpers.httpRequestWithAuthentication.call(

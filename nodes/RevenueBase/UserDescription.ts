@@ -32,8 +32,8 @@ export const userOperations: INodeProperties[] = [
 				action: 'Rotate API key',
 				routing: {
 					request: {
-						method: 'POST',
-						url: '/v1/rotate-key',
+						method: 'GET',
+						url: '/v1/new-api-key',
 					},
 				},
 			},
