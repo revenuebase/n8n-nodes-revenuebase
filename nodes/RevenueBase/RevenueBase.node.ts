@@ -237,20 +237,20 @@ export class RevenueBase implements INodeType {
 						const companyName = this.getNodeParameter('name', i) as string;
 						const additionalFields = this.getNodeParameter('additionalFields', i) as {
 							result_count?: number;
-							hq_country?: string;
-							hq_state?: string;
-							hq_city?: string;
-							hq_street?: string;
-							hq_zip?: string;
+							headquarters_country?: string;
+							headquarters_state?: string;
+							headquarters_city?: string;
+							headquarters_street?: string;
+							headquarters_zip?: string;
 						};
 
 						const body: Record<string, unknown> = { company_name: companyName };
 						if (additionalFields.result_count) body.result_count = additionalFields.result_count;
-						if (additionalFields.hq_country) body.hq_country = additionalFields.hq_country;
-						if (additionalFields.hq_state) body.hq_state = additionalFields.hq_state;
-						if (additionalFields.hq_city) body.hq_city = additionalFields.hq_city;
-						if (additionalFields.hq_street) body.hq_street = additionalFields.hq_street;
-						if (additionalFields.hq_zip) body.hq_zip = additionalFields.hq_zip;
+						if (additionalFields.headquarters_country) body.headquarters_country = additionalFields.headquarters_country;
+						if (additionalFields.headquarters_state) body.headquarters_state = additionalFields.headquarters_state;
+						if (additionalFields.headquarters_city) body.headquarters_city = additionalFields.headquarters_city;
+						if (additionalFields.headquarters_street) body.headquarters_street = additionalFields.headquarters_street;
+						if (additionalFields.headquarters_zip) body.headquarters_zip = additionalFields.headquarters_zip;
 
 						const options: IHttpRequestOptions = {
 							method: 'POST',
@@ -268,19 +268,19 @@ export class RevenueBase implements INodeType {
 						const keyword = this.getNodeParameter('keyword', i) as string;
 						const resultCount = this.getNodeParameter('result_count', i) as number;
 						const additionalFields = this.getNodeParameter('additionalFields', i) as {
-							hq_country?: string;
-							hq_state?: string;
-							hq_city?: string;
-							hq_street?: string;
-							hq_zip?: string;
+							headquarters_country?: string;
+							headquarters_state?: string;
+							headquarters_city?: string;
+							headquarters_street?: string;
+							headquarters_zip?: string;
 						};
 
 						const body: Record<string, unknown> = { keyword, result_count: resultCount };
-						if (additionalFields.hq_country) body.hq_country = additionalFields.hq_country;
-						if (additionalFields.hq_state) body.hq_state = additionalFields.hq_state;
-						if (additionalFields.hq_city) body.hq_city = additionalFields.hq_city;
-						if (additionalFields.hq_street) body.hq_street = additionalFields.hq_street;
-						if (additionalFields.hq_zip) body.hq_zip = additionalFields.hq_zip;
+						if (additionalFields.headquarters_country) body.headquarters_country = additionalFields.headquarters_country;
+						if (additionalFields.headquarters_state) body.headquarters_state = additionalFields.headquarters_state;
+						if (additionalFields.headquarters_city) body.headquarters_city = additionalFields.headquarters_city;
+						if (additionalFields.headquarters_street) body.headquarters_street = additionalFields.headquarters_street;
+						if (additionalFields.headquarters_zip) body.headquarters_zip = additionalFields.headquarters_zip;
 
 						const options: IHttpRequestOptions = {
 							method: 'POST',

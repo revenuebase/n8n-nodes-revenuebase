@@ -63,15 +63,15 @@ export const companyFields: INodeProperties[] = [
 		options: [
 			{
 				displayName: 'Headquarters City',
-				name: 'hq_city',
+				name: 'headquarters_city',
 				type: 'string',
 				default: '',
 				placeholder: 'San Francisco',
-				description: 'Filter results to companies headquartered in this city',
+				description: 'Filter results to companies headquartered in this city (case-sensitive)',
 			},
 			{
 				displayName: 'Headquarters Country',
-				name: 'hq_country',
+				name: 'headquarters_country',
 				type: 'string',
 				default: '',
 				placeholder: 'US',
@@ -80,7 +80,7 @@ export const companyFields: INodeProperties[] = [
 			},
 			{
 				displayName: 'Headquarters State',
-				name: 'hq_state',
+				name: 'headquarters_state',
 				type: 'string',
 				default: '',
 				placeholder: 'CA',
@@ -88,7 +88,7 @@ export const companyFields: INodeProperties[] = [
 			},
 			{
 				displayName: 'Headquarters Street',
-				name: 'hq_street',
+				name: 'headquarters_street',
 				type: 'string',
 				default: '',
 				placeholder: '123 Main St',
@@ -96,7 +96,7 @@ export const companyFields: INodeProperties[] = [
 			},
 			{
 				displayName: 'Headquarters Zip',
-				name: 'hq_zip',
+				name: 'headquarters_zip',
 				type: 'string',
 				default: '',
 				placeholder: '94105',
@@ -163,15 +163,15 @@ export const companyFields: INodeProperties[] = [
 		options: [
 			{
 				displayName: 'Headquarters City',
-				name: 'hq_city',
+				name: 'headquarters_city',
 				type: 'string',
 				default: '',
 				placeholder: 'San Francisco',
-				description: 'Filter results to companies headquartered in this city',
+				description: 'Filter results to companies headquartered in this city (case-sensitive)',
 			},
 			{
 				displayName: 'Headquarters Country',
-				name: 'hq_country',
+				name: 'headquarters_country',
 				type: 'string',
 				default: '',
 				placeholder: 'US',
@@ -180,7 +180,7 @@ export const companyFields: INodeProperties[] = [
 			},
 			{
 				displayName: 'Headquarters State',
-				name: 'hq_state',
+				name: 'headquarters_state',
 				type: 'string',
 				default: '',
 				placeholder: 'CA',
@@ -188,7 +188,7 @@ export const companyFields: INodeProperties[] = [
 			},
 			{
 				displayName: 'Headquarters Street',
-				name: 'hq_street',
+				name: 'headquarters_street',
 				type: 'string',
 				default: '',
 				placeholder: '123 Main St',
@@ -196,7 +196,7 @@ export const companyFields: INodeProperties[] = [
 			},
 			{
 				displayName: 'Headquarters Zip',
-				name: 'hq_zip',
+				name: 'headquarters_zip',
 				type: 'string',
 				default: '',
 				placeholder: '94105',
