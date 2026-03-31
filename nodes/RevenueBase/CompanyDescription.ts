@@ -39,7 +39,7 @@ export const companyFields: INodeProperties[] = [
 		type: 'string',
 		required: true,
 		default: '',
-		placeholder: 'Acme Corp',
+		placeholder: 'RevenueBase Inc',
 		description: 'The company name to resolve against the RevenueBase database',
 		displayOptions: {
 			show: {
@@ -117,13 +117,13 @@ export const companyFields: INodeProperties[] = [
 
 	// ── Discover ─────────────────────────────────────────────────────
 	{
-		displayName: 'Keyword',
+		displayName: 'Semantic Search',
 		name: 'keyword',
 		type: 'string',
 		required: true,
 		default: '',
 		placeholder: 'cloud security software',
-		description: 'A keyword or natural-language description to search companies by',
+		description: 'Keywords or natural-language description to search companies by',
 		displayOptions: {
 			show: {
 				resource: ['company'],
@@ -135,7 +135,7 @@ export const companyFields: INodeProperties[] = [
 		displayName: 'Result Count',
 		name: 'result_count',
 		type: 'number',
-		default: 1000,
+		default: 10,
 		description: 'Number of results to return. Must be between 1 and 2000.',
 		typeOptions: {
 			minValue: 1,
