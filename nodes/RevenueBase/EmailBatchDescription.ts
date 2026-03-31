@@ -25,16 +25,16 @@ export const emailBatchOperations: INodeProperties[] = [
 				action: 'Download batch job results',
 			},
 			{
-				name: 'List',
-				value: 'getMany',
-				description: 'List all active batch jobs on the account',
-				action: 'List active batch jobs',
-			},
-			{
 				name: 'Get Status',
 				value: 'getStatus',
 				description: 'Check the processing status of a batch job',
 				action: 'Get batch job status',
+			},
+			{
+				name: 'List',
+				value: 'getMany',
+				description: 'List all active batch jobs on the account',
+				action: 'List active batch jobs',
 			},
 			{
 				name: 'Upload',
