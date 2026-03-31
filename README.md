@@ -27,7 +27,7 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 ### Email Batch Job
 - **Upload** — Upload a CSV or JSON file of email addresses for asynchronous bulk validation.
 - **Get Status** — Check the processing status of a batch job (`QUEUED`, `PROCESSING`, `COMPLETED`, `ERROR`, `CANCELLED`).
-- **Get Many** — List all active batch jobs currently queued or in progress.
+- **List** — List all active batch jobs currently queued or in progress.
 - **Download** — Download the results of a completed batch job as a binary file.
 - **Cancel** — Cancel a queued or in-progress batch job.
 
