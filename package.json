@@ -1,6 +1,6 @@
 {
 	"name": "@revenuebase/n8n-nodes-revenuebase",
-	"version": "0.1.5",
+	"version": "0.1.6",
 	"description": "n8n community node for the RevenueBase B2B data and email verification API",
 	"license": "MIT",
 	"homepage": "https://docs.revenuebase.ai",
