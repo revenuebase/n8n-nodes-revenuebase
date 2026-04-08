@@ -17,12 +17,6 @@ export const userOperations: INodeProperties[] = [
 				value: 'getCredits',
 				description: 'Get the number of validation credits remaining on the account',
 				action: 'Get remaining credit balance',
-				routing: {
-					request: {
-						method: 'GET',
-						url: '/v1/credits',
-					},
-				},
 			},
 			{
 				name: 'Rotate API Key',
@@ -30,12 +24,6 @@ export const userOperations: INodeProperties[] = [
 				description:
 					'Generate a new API key and immediately invalidate the previous one. Update all integrations before using.',
 				action: 'Rotate API key',
-				routing: {
-					request: {
-						method: 'GET',
-						url: '/v1/new-api-key',
-					},
-				},
 			},
 		],
 		default: 'getCredits',
