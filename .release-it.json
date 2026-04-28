@@ -1,5 +1,5 @@
 {
 	"hooks": {
-		"after:bump": "npm install --package-lock-only"
+		"before:git:commit": "npm install --package-lock-only && git add package-lock.json"
 	}
 }
