@@ -96,7 +96,7 @@ export class RevenueBase implements INodeType {
 
 						const options: IHttpRequestOptions = {
 							method: 'POST',
-							url: `${BASE_URL}/v1/process-email`,
+							url: `${BASE_URL}/v2/email/verify`,
 							headers: { 'Content-Type': 'application/json' },
 							qs: metadata ? { metadata: true } : {},
 							body: { email },
@@ -135,7 +135,7 @@ export class RevenueBase implements INodeType {
 
 						const uploadOptions: IHttpRequestOptions = {
 							method: 'POST',
-							url: `${BASE_URL}/v1/batch-upload${includeMetadata ? '?metadata=true' : ''}`,
+							url: `${BASE_URL}/v2/email/verify/batch${includeMetadata ? '?metadata=true' : ''}`,
 							headers: {
 								'Content-Type': `multipart/form-data; boundary=${boundary}`,
 							},
@@ -151,10 +151,8 @@ export class RevenueBase implements INodeType {
 						const processId = this.getNodeParameter('processId', i) as string;
 
 						const options: IHttpRequestOptions = {
-							method: 'POST',
-							url: `${BASE_URL}/v1/batch-process-email-status`,
-							headers: { 'Content-Type': 'application/json' },
-							body: { process_id: parseInt(processId, 10) },
+							method: 'GET',
+							url: `${BASE_URL}/v2/jobs/${parseInt(processId, 10)}`,
 							json: true,
 						};
 						responseData = await this.helpers.httpRequestWithAuthentication.call(
@@ -165,7 +163,7 @@ export class RevenueBase implements INodeType {
 					} else if (operation === 'getMany') {
 						const options: IHttpRequestOptions = {
 							method: 'GET',
-							url: `${BASE_URL}/v1/queued-process`,
+							url: `${BASE_URL}/v2/jobs`,
 							json: true,
 						};
 						responseData = await this.helpers.httpRequestWithAuthentication.call(
@@ -181,10 +179,8 @@ export class RevenueBase implements INodeType {
 						) as string;
 
 						const options: IHttpRequestOptions = {
-							method: 'POST',
-							url: `${BASE_URL}/v1/batch-download`,
-							headers: { 'Content-Type': 'application/json' },
-							body: { process_id: parseInt(processId, 10) },
+							method: 'GET',
+							url: `${BASE_URL}/v2/jobs/${parseInt(processId, 10)}/download`,
 							encoding: 'arraybuffer',
 							returnFullResponse: true,
 						};
@@ -219,9 +215,7 @@ export class RevenueBase implements INodeType {
 
 						const options: IHttpRequestOptions = {
 							method: 'POST',
-							url: `${BASE_URL}/v1/cancel-process`,
-							headers: { 'Content-Type': 'application/json' },
-							body: { process_id: parseInt(processId, 10) },
+							url: `${BASE_URL}/v2/jobs/${parseInt(processId, 10)}/cancel`,
 							json: true,
 						};
 						responseData = await this.helpers.httpRequestWithAuthentication.call(
@@ -255,7 +249,7 @@ export class RevenueBase implements INodeType {
 
 						const options: IHttpRequestOptions = {
 							method: 'POST',
-							url: `${BASE_URL}/v2/company-resolver/resolve`,
+							url: `${BASE_URL}/v2/organization/resolve`,
 							headers: { 'Content-Type': 'application/json' },
 							body,
 							json: true,
@@ -285,7 +279,7 @@ export class RevenueBase implements INodeType {
 
 						const options: IHttpRequestOptions = {
 							method: 'POST',
-							url: `${BASE_URL}/v2/company-resolver/discovery`,
+							url: `${BASE_URL}/v2/organization/discover`,
 							headers: { 'Content-Type': 'application/json' },
 							body,
 							json: true,
@@ -303,7 +297,7 @@ export class RevenueBase implements INodeType {
 					if (operation === 'getCredits') {
 						const options: IHttpRequestOptions = {
 							method: 'GET',
-							url: `${BASE_URL}/v1/credits`,
+							url: `${BASE_URL}/v2/account/balance`,
 							json: true,
 						};
 						responseData = await this.helpers.httpRequestWithAuthentication.call(
@@ -313,8 +307,8 @@ export class RevenueBase implements INodeType {
 						);
 					} else if (operation === 'rotateApiKey') {
 						const options: IHttpRequestOptions = {
-							method: 'GET',
-							url: `${BASE_URL}/v1/new-api-key`,
+							method: 'POST',
+							url: `${BASE_URL}/v2/account/api-keys/rotate`,
 							json: true,
 						};
 						responseData = await this.helpers.httpRequestWithAuthentication.call(

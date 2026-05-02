@@ -27,23 +27,22 @@ credentials/
 
 - **Base URL:** `https://api.revenuebase.ai`
 - **Auth:** `x-key` header
-- **v1** endpoints: email verification, batch jobs, user operations
-- **v2** endpoints: company resolver
+- **v2** endpoints: all operations (fully migrated from v1)
 
 ### Endpoint map
 
 | Resource | Operation | Method | Path |
 |---|---|---|---|
-| Email Verification | Validate | POST | `/v1/process-email` |
-| Email Batch Job | Upload | POST | `/v1/batch-upload` (multipart, field: `requested_file`) |
-| Email Batch Job | Get Status | POST | `/v1/batch-process-email-status` (body: `process_id`) |
-| Email Batch Job | Get Many | GET | `/v1/queued-process` |
-| Email Batch Job | Download | POST | `/v1/batch-download` (body: `process_id`) |
-| Email Batch Job | Cancel | POST | `/v1/cancel-process` (body: `process_id`) |
-| Company | Resolve | POST | `/v2/company-resolver/resolve` |
-| Company | Discover | POST | `/v2/company-resolver/discovery` |
-| User | Get Credits | GET | `/v1/credits` |
-| User | Rotate API Key | POST | `/v1/rotate-key` |
+| Email Verification | Validate | POST | `/v2/email/verify` (qs: `metadata`) |
+| Email Batch Job | Upload | POST | `/v2/email/verify/batch` (multipart, field: `requested_file`, qs: `metadata`) |
+| Email Batch Job | Get Status | GET | `/v2/jobs/{process_id}` |
+| Email Batch Job | Get Many | GET | `/v2/jobs` |
+| Email Batch Job | Download | GET | `/v2/jobs/{process_id}/download` |
+| Email Batch Job | Cancel | POST | `/v2/jobs/{process_id}/cancel` |
+| Company | Resolve | POST | `/v2/organization/resolve` |
+| Company | Discover | POST | `/v2/organization/discover` |
+| User | Get Credits | GET | `/v2/account/balance` |
+| User | Rotate API Key | POST | `/v2/account/api-keys/rotate` |
 
 ## Development workflow
 
@@ -77,8 +76,8 @@ After any change: rebuild, then hard-refresh the browser (`Cmd+Shift+R`) to clea
 
 - **Don't use `requestDefaults`** — this node is programmatic. Adding `requestDefaults` would switch n8n to declarative routing and break the `execute()` method.
 - **Multipart upload** builds raw `Buffer.concat` with a boundary string — no `form-data` package. The form field name must be `requested_file` (not `file`).
-- **Company Discover** endpoint is `/discovery` (not `/discover`) — easy to mistype.
-- **Batch status/download/cancel** all use POST with `process_id` in the JSON body, not GET with a path parameter.
+- **Company Discover** endpoint is `/v2/organization/discover` (not `/discovery`) — easy to mistype from the old v1 path.
+- **Batch status/download** use GET with `process_id` as a path parameter. Cancel uses POST with path param (no body).
 - **Icon cache:** n8n and the browser both cache icons. After an icon change, hard-refresh the browser.
 - **SVG icon** lives at `nodes/RevenueBase/RevenueBase.svg` and must also be present in `credentials/RevenueBase.svg`. Both are included in the build via static file copy.
 
