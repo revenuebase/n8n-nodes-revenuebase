@@ -90,7 +90,7 @@ export class RevenueBase implements INodeType {
 
 				// ── Email Verification ─────────────────────────────────────
 				if (resource === 'email') {
-					if (operation === 'validate') {
+					if (operation === 'verify') {
 						const email = this.getNodeParameter('email', i) as string;
 						const metadata = this.getNodeParameter('metadata', i) as boolean;
 

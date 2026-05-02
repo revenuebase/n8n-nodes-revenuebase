@@ -13,13 +13,13 @@ export const emailOperations: INodeProperties[] = [
 		},
 		options: [
 			{
-				name: 'Validate',
-				value: 'validate',
-				description: 'Validate a single email address for deliverability',
-				action: 'Validate an email address',
+				name: 'Verify',
+				value: 'verify',
+				description: 'Verify a single email address for deliverability',
+				action: 'Verify an email address',
 			},
 		],
-		default: 'validate',
+		default: 'verify',
 	},
 ];
 
@@ -31,11 +31,11 @@ export const emailFields: INodeProperties[] = [
 		required: true,
 		default: '',
 		placeholder: 'name@example.com',
-		description: 'The email address to validate',
+		description: 'The email address to verify',
 		displayOptions: {
 			show: {
 				resource: ['email'],
-				operation: ['validate'],
+				operation: ['verify'],
 			},
 		},
 	},
@@ -48,7 +48,7 @@ export const emailFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['email'],
-				operation: ['validate'],
+				operation: ['verify'],
 			},
 		},
 	},

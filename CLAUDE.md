@@ -33,7 +33,7 @@ credentials/
 
 | Resource | Operation | Method | Path |
 |---|---|---|---|
-| Email Verification | Validate | POST | `/v2/email/verify` (qs: `metadata`) |
+| Email Verification | Verify | POST | `/v2/email/verify` (qs: `metadata`) |
 | Email Batch Job | Upload | POST | `/v2/email/verify/batch` (multipart, field: `requested_file`, qs: `metadata`) |
 | Email Batch Job | Get Status | GET | `/v2/jobs/{process_id}` |
 | Email Batch Job | Get Many | GET | `/v2/jobs` |
